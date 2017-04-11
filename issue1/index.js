@@ -22,4 +22,8 @@ var cars = [
   }
 ]
 
+app.get('/cars', function(request, response) {
+  response.json(cars)
+})
+
 app.listen(3000)
