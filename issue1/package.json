@@ -19,6 +19,6 @@
   "homepage": "https://github.com/hdcoulson/RRR#readme",
   "dependencies": {
     "express": "^4.15.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
   }
 }
