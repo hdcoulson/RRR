@@ -12,6 +12,7 @@ cars.then(function(response) {
     }
   })
 
+//list-view page
 function renderCar(car) {
   // var $row = document.createElement('div')//1
   var $column = document.createElement('div')//2
@@ -22,21 +23,22 @@ function renderCar(car) {
   var $description = document.createElement('p')//7
   var $buttonDiv = document.createElement('p')//8
   var $buttonOne = document.createElement('a')//9
-  var $buttonTwo = document.createElement('a')//10
+  // var $buttonTwo = document.createElement('a')//10
 
   $carName.textContent = car.make + ' ' + car.model//6
   $description.textContent = car.description//7
+  $buttonOne.textContent = 'Test'
 
   // $row.classList.add('row')//1
   $column.classList.add('col-sm-6', 'col-md-4')//2
   $thumbnailClass.classList.add('thumbnail')//3
   $caption.classList.add('caption')//5
   $buttonOne.classList.add('btn', 'btn-primary','btn', 'btn-default')//9
-  $buttonTwo.classList.add('btn', 'btn-primary','btn', 'btn-default')//10
+  // $buttonTwo.classList.add('btn', 'btn-primary','btn', 'btn-default')//10
 
   $carPhoto.setAttribute('src', car.photo)//4
   $buttonOne.setAttribute('href', '#')
-  $buttonTwo.setAttribute('href', '#')
+  // $buttonTwo.setAttribute('href', '#')
 
   // $row.appendChild($column)
   $column.appendChild($thumbnailClass)
@@ -46,7 +48,7 @@ function renderCar(car) {
   $caption.appendChild($description)
   $caption.appendChild($buttonDiv)
   $buttonDiv.appendChild($buttonOne)
-  $buttonDiv.appendChild($buttonTwo)
+  // $buttonDiv.appendChild($buttonTwo)
 
   return $column
 
