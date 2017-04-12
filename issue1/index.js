@@ -28,6 +28,8 @@ var cars = [
   }
 ]
 
+var comments = []
+
 app.get('/cars', function(request, response) {
   response.json(cars)
 })
