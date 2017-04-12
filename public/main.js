@@ -54,19 +54,39 @@ function renderCar(car) {
   })
 }
 
-// <div class="media">
-//   <div class="media-left">
-//     <a href="#">
-//       <img class="media-object" src="..." alt="...">
+// <div class="media">//1
+//   <div class="media-left">//2
+//     <a href="#">//3
+//       <img class="media-object" src="..." alt="...">//4
 //     </a>
 //   </div>
-//   <div class="media-body">
-//     <h4 class="media-heading">Media heading</h4>
-//     ...
+//   <div class="media-body">//5
+//     <h4 class="media-heading">Media heading</h4>//6
+//     ...<p>//7 maybe?
 //   </div>
 // </div>
 
 //details page
 function renderSelectedCar(car) {
+  var $media = document.createElement('div')//1
+  var $mediaLeft = document.createElement('div')//2
+  var $href = document.createElement('a')//3
+  var $carPhoto = document.createElement('img')//4
+  var $mediaBody = document.createElement('div')//5
+  var $carName = document.createElement('h4')//6
+  var $proReview = document.createElement('p')//7
 
+  $carName.textContent = car.make + ' ' + car.model
+  $proReview.textContent = car.proReview
+
+  $media.classList.add('media')//1
+  $medialeft.classList.add('media-left')//2
+  $carPhoto.classList.add('media-object')//4
+  $mediaBody.classList.add('media-body')//5
+  $carName.classList.add('media-heading')//6
+
+  $href.setAttribute('href', '#')
+  $carPhoto.setAttribute('src', car.photo)
+
+  return $media
 }
