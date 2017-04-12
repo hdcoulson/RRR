@@ -16,7 +16,7 @@ var cars = [
     id: 2,
     make: 'Toyota',
     model: 'RAV4',
-    description: 'Despite the sea of competitors swimming in the compact-SUV pool, the 2017 Toyota RAV4 remains the gold medal champ.',
+    description: 'Despite the sea of competitors swimming in the compact-SUV pool, the 2017 Toyota RAV4 remains the gold medal champ with its legendary quality, reliability and dependability.',
     photo: 'images/rav4 silver.jpg'
   },
   {
