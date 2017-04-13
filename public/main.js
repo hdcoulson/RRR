@@ -54,19 +54,6 @@ function renderCar(car) {
   })
 }
 
-// <div class="media">//1
-//   <div class="media-left">//2
-//     <a href="#">//3
-//       <img class="media-object" src="..." alt="...">//4
-//     </a>
-//   </div>
-//   <div class="media-body">//5
-//     <h4 class="media-heading">Media heading</h4>//6
-//     ...<p>//7 maybe?
-//   </div>
-// </div>
-
-
 //details page
 function renderSelectedCar(car) {
   var $media = document.createElement('div')//1
