@@ -33,8 +33,16 @@ var cars = [
 
 var comments = []
 
-app.get('/cars', function(request, response) {
-  response.json(cars)
+app.get('/cars', function(req, res) {
+  res.json(cars)
 })
 
+app.get('/cars/:id', function(req, res) {
+  function getCar(car) {
+    var reqId = req.params.id
+    return car.id.toString() === reqId
+  }
+  var selectedCar = cars.filter(getCar)
+  res.json(selectedCar[0])
+})
 app.listen(3000)

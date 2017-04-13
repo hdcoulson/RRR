@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 var $carsContainer = document.querySelector('#list-view')
-var cars = fetch('/cars')
-cars.then(function(response) {
+var carsArray = fetch('/cars')
+carsArray.then(function(response) {
   return response.json()
 })
-  .then(function(cars) {
-    for (var i = 0; i <cars.length; i++) {
-      var currentCar = cars[i]
+  .then(function(carsArray) {
+    for (var i = 0; i <carsArray.length; i++) {
+      var currentCar = carsArray[i]
       var $car = renderCar(currentCar)
       $carsContainer.appendChild($car)
     }
@@ -48,7 +48,7 @@ function renderCar(car) {
 
   return $column
 
-  cars.forEach(function (car) {
+  carsArray.forEach(function (car) {
     var $listView = document.querySelector('list-view')
     $listView.appendChild(renderCar(car))
   })
