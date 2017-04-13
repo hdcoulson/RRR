@@ -14,3 +14,5 @@ document.addEventListener('click', function(event) {
       $carDetails.innerHTML=''
       $carDetails.appendChild($car)
     })
+  }
+})
