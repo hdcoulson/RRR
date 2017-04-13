@@ -66,6 +66,7 @@ function renderCar(car) {
 //   </div>
 // </div>
 
+
 //details page
 function renderSelectedCar(car) {
   var $media = document.createElement('div')//1
@@ -80,13 +81,20 @@ function renderSelectedCar(car) {
   $proReview.textContent = car.proReview
 
   $media.classList.add('media')//1
-  $medialeft.classList.add('media-left')//2
+  $mediaLeft.classList.add('media-left')//2
   $carPhoto.classList.add('media-object')//4
   $mediaBody.classList.add('media-body')//5
   $carName.classList.add('media-heading')//6
 
   $href.setAttribute('href', '#')
   $carPhoto.setAttribute('src', car.photo)
+
+  $media.appendChild($mediaLeft)
+  $mediaLeft.appendChild($href)
+  $mediaLeft.appendChild($carPhoto)
+  $media.appendChild($mediaBody)
+  $mediaBody.appendChild($carName)
+  $mediaBody.appendChild($proReview)
 
   return $media
 }
