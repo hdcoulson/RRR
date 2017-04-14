@@ -30,4 +30,17 @@ document.addEventListener('click', function(event) {
     $carDetails.innerHTML=''
   }
 })
-//
+
+window.addEventListener('DOMContentLoaded', function (event) {
+  var $commentForm = document.querySelector('#comments')
+
+  $commentForm.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    var commentFormData = new FormData($commentForm)
+
+    for (var response of commentFormData.entries()) {
+      console.log(response[0], response[1])
+      }
+    })
+  })

@@ -12,7 +12,7 @@ carsArray.then(function(response) {
     }
   })
 
-//list-view page///
+//list-view page
 function renderCar(car) {
   var $column = document.createElement('div')//2
   var $thumbnailClass = document.createElement('div')//3
