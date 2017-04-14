@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <title>RRR-Autos</title>
   </head>
   <body>
@@ -24,7 +24,28 @@
     </div>
     <div class="container" id="list-view"></div>
     <div class="container" id="car-details"></div>
-    <script src="main.js"></script>
-    <script src="listeners.js"></script>
+    <div class="col-sm-12">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-8">
+        <div class="container">
+          <form id="comments">
+            <label>Name:</label>
+            <label>
+              <input type="text" name="name" placeholder="Name">
+            </label>
+            <label>Comments:</label>
+            <label>
+              <textarea type="text" name="comments" cols="40" rows="5" placeholder="Comments"></textarea>
+            </label>
+            <label>
+              <button type="submit">Submit</button>
+            </label>
+          </form>
+        </div>
+        </div>
+      </div>
+      <script src="main.js"></script>
+      <script src="listeners.js"></script>
   </body>
 </html>

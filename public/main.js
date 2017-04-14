@@ -31,6 +31,7 @@ function renderCar(car) {
   $thumbnailClass.classList.add('thumbnail')//3
   $caption.classList.add('caption')//5
   $button.classList.add('btn', 'btn-primary','btn', 'btn-default', 'details')//9
+  $carPhoto.classList.add('img-responsive')
 
   $carPhoto.setAttribute('src', car.photo)//4
   $carPhoto.setAttribute('id', car.id)
