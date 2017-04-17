@@ -56,10 +56,13 @@ function renderCar(car) {
 
 //details page
 function renderSelectedCar(car) {
+  var $column = document.createElement('div')
   var $media = document.createElement('div')//1
+  var $mediaLeftDiv = document.createElement('div')
   var $mediaLeft = document.createElement('div')//2
   var $href = document.createElement('a')//3
   var $carPhoto = document.createElement('img')//4
+  var $mediaBodyDiv = document.createElement('div')
   var $mediaBody = document.createElement('div')//5
   var $carName = document.createElement('h4')//6
   var $proReview = document.createElement('p')//7
@@ -67,21 +70,28 @@ function renderSelectedCar(car) {
   $carName.textContent = car.make + ' ' + car.model
   $proReview.textContent = car.proReview
 
+  $column.classList.add('col-sm-12')
   $media.classList.add('media')//1
   $mediaLeft.classList.add('media-left')//2
   $carPhoto.classList.add('media-object')//4
+  $mediaLeftDiv.classList.add('col-sm-4')
+  $mediaBodyDiv.classList.add('col-sm-8')
+  $carPhoto.classList.add('img-responsive')
   $mediaBody.classList.add('media-body')//5
   $carName.classList.add('media-heading')//6
 
   $href.setAttribute('href', '#')
   $carPhoto.setAttribute('src', car.photo)
 
-  $media.appendChild($mediaLeft)
+  $column.appendChild($media)
+  $media.appendChild($mediaLeftDiv)
+  $mediaLeftDiv.appendChild($mediaLeft)
   $mediaLeft.appendChild($href)
   $mediaLeft.appendChild($carPhoto)
-  $media.appendChild($mediaBody)
+  $media.appendChild($mediaBodyDiv)
+  $mediaBodyDiv.appendChild($mediaBody)
   $mediaBody.appendChild($carName)
   $mediaBody.appendChild($proReview)
 
-  return $media
+  return $column
 }
