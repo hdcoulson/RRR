@@ -5,8 +5,8 @@ document.addEventListener('click', function(event) {
   var $welcome = document.querySelector('#welcome.container')
   var $clickedItemId = event.target.id
 
-  var test = fetch('/cars' + '/' + $clickedItemId)
-  test.then(function(response) {
+  var clickedCar = fetch('/cars' + '/' + $clickedItemId)
+  clickedCar.then(function(response) {
     return response.json()
   })
     .then(function(car) {
@@ -18,7 +18,30 @@ document.addEventListener('click', function(event) {
       $carDetails.appendChild($car)
     })
   }
-})
+  else if(event.target.classList.contains('submit')){
+  var $commentForm = document.querySelector('#comments')
+
+  $commentForm.addEventListener('submit', function (event) {
+    event.preventDefault()
+
+    var commentFormData = new FormData($commentForm)
+
+    var comment = {}
+    for (var response of commentFormData.entries()) {
+      comment[response[0]] = response[1]
+      }
+      var userComment = {
+        method: 'POST',
+        headers: new Headers ({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(comment)
+      }
+      fetch('/comments', userComment)
+    })
+    }
+  })
+
 
 document.addEventListener('click', function(event) {
   if(event.target.id === 'back') {
@@ -30,3 +53,5 @@ document.addEventListener('click', function(event) {
     $carDetails.innerHTML=''
   }
 })
+
+var testArray = []

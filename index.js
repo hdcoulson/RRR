@@ -1,6 +1,9 @@
 var express = require('express')
 var app = express()
 app.use(express.static('public'))
+var bodyParser = require('body-parser')
+
+app.use(bodyParser.json())
 
 console.log('hello 2')
 
@@ -31,7 +34,18 @@ var cars = [
   }
 ]
 
-var comments = []
+var comments = [
+  {
+    id: 1,
+    name: 'Jon Doe',
+    comments: 'This is a test comment'
+  },
+  {
+    id: 2,
+    name: 'Jane Doe',
+    comments: 'This is a second comment'
+  }
+]
 
 app.get('/cars', function(req, res) {
   res.json(cars)
@@ -45,4 +59,23 @@ app.get('/cars/:id', function(req, res) {
   var selectedCar = cars.filter(getCar)
   res.json(selectedCar[0])
 })
+
+app.post('/comments', function(req, res) {
+  var comment = req.body
+  comments.push(comment)
+  res.sendStatus(201)
+})
+
+app.get('/comments', function(req, res) {
+  res.json(comments)
+})
+app.get('/comments/:id', function(req, res) {
+  function getComment(comment) {
+    var reqId = req.params.id
+    return comment.id.toString() === reqId
+  }
+  var selectedComment = comments.filter(getComment)
+  res.json(selectedComment[0])
+})
+
 app.listen(3000)
