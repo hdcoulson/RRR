@@ -8,9 +8,11 @@
     "express": "^4.15.2",
     "static": "^2.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
   "scripts": {
-    "watch": "index.js",
+    "watch": "nodemon index.js",
     "start": "node index.js"
   },
   "repository": {

@@ -9,7 +9,7 @@ console.log('hello 2')
 
 var cars = [
   {
-    id: 1,
+    vehicleId: 1,
     make: 'Honda',
     model: 'CR-V',
     description: 'The Honda CR-V has been totally revamped for 2017, further polishing a formula of practicality, efficiency, refinement and value that has made it the best-selling SUV over the past 20 years.',
@@ -17,7 +17,7 @@ var cars = [
     proReview: 'The 2017 Honda CR-V is the right choice for a compact SUV. True, it isn’t as much fun to drive as the Mazda CX-5, and the RAV4 comes with more standard safety features. Still, no other vehicle in the compact SUV class hits all the marks most people are looking for in this type of ride: an upscale, comfortable interior; a smooth ride; superior cargo space; good gas mileage; and good reliability. Its base price is higher than some competitors, but the CR-V EX trim provides as many features as the CX-5 and RAV4, while adding more cargo and passenger space. If you can afford just a little bit more, the CR-V returns a whole lot.'
   },
   {
-    id: 2,
+    vehicleId: 2,
     make: 'Toyota',
     model: 'RAV4',
     description: 'Despite the sea of competitors swimming in the compact-SUV pool, the 2017 Toyota RAV4 remains the gold medal champ with its legendary quality, reliability and dependability.',
@@ -25,7 +25,7 @@ var cars = [
     proReview:'Though you won’t find the RAV4 at the top of our compact SUV rankings, it should still be on your shopping list. The RAV4 is a reliable family hauler that comes with a generous list of features, with a particular focus on safety to keep your mind at ease when carting your family around. Its performance and interior styling won’t wow you like the Ford Escape or the Nissan Rogue will, but the intuitive infotainment system, organized layout, and spacious cabin and cargo area make the RAV4 an appealing SUV in a competitive class. Sure, you may find rival SUVs at lower prices with nicer interiors, but they may not have the long list of standard features or near top-of-the-class cargo space that the RAV4 does.'
   },
   {
-    id: 3,
+    vehicleId: 3,
     make: 'Nissan',
     model: 'Murano',
     description: 'Although the 2017 Nissan Murano SUV can faithfully carry out its duties as a family-hauling crossover SUV, its art-house exterior styling makes it different than anything else in the segment.',
@@ -36,14 +36,19 @@ var cars = [
 
 var comments = [
   {
-    id: 1,
+    vehicleId: 1,
     name: 'Jon Doe',
-    comments: 'This is a test comment'
+    comments: 'Honda CR-V review #1'
   },
   {
-    id: 2,
+    vehicleId: 2,
     name: 'Jane Doe',
     comments: 'This is a second comment'
+  },
+  {
+    vehicleId: 1,
+    name: 'Bob Doe',
+    comments: 'Another Honda CR-V review'
   }
 ]
 
@@ -51,10 +56,10 @@ app.get('/cars', function(req, res) {
   res.json(cars)
 })
 
-app.get('/cars/:id', function(req, res) {
+app.get('/cars/:vehicleId', function(req, res) {
   function getCar(car) {
-    var reqId = req.params.id
-    return car.id.toString() === reqId
+    var reqId = req.params.vehicleId
+    return car.vehicleId.toString() === reqId
   }
   var selectedCar = cars.filter(getCar)
   res.json(selectedCar[0])
@@ -69,13 +74,26 @@ app.post('/comments', function(req, res) {
 app.get('/comments', function(req, res) {
   res.json(comments)
 })
-app.get('/comments/:id', function(req, res) {
-  function getComment(comment) {
-    var reqId = req.params.id
-    return comment.id.toString() === reqId
+
+// app.get('/comments/:id', function(req, res) {
+//   function getComment(comment) {
+//     var reqId = req.params.id
+//     return comment.id.toString() === reqId
+//   }
+//   var selectedComment = comments.filter(getComment)
+//   res.json(selectedComment[0])
+// })
+
+app.get('/comments/:vehicleId', function(req, res) {
+  function isVehicleComment(comment) {
+    if(req.params.vehicleId === comment.vehicleId.toString()) {
+      return true
+    }
+      return false
   }
-  var selectedComment = comments.filter(getComment)
-  res.json(selectedComment[0])
+  var vehicleComments = comments.filter(isVehicleComment)
+  res.json(vehicleComments)
 })
+
 
 app.listen(3000)

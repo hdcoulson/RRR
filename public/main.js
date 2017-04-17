@@ -34,10 +34,10 @@ function renderCar(car) {
   $carPhoto.classList.add('img-responsive')
 
   $carPhoto.setAttribute('src', car.photo)//4
-  $carPhoto.setAttribute('id', car.id)
+  $carPhoto.setAttribute('id', car.vehicleId)
   $button.setAttribute('href', '#')//9
-  $button.setAttribute('id', car.id)
-  $carName.setAttribute('id', car.id)
+  $button.setAttribute('id', car.vehicleId)
+  $carName.setAttribute('id', car.vehicleId)
 
   $column.appendChild($thumbnailClass)
   $thumbnailClass.appendChild($carPhoto)
@@ -119,6 +119,7 @@ function renderSelectedCar(car) {
   $carName.classList.add('media-heading')
   $comments.classList.add('col-sm-12')//1
   $submitButton.classList.add('submit')
+  $proReview.classList.add('proReview')
 
   $href.setAttribute('href', '#')
   $carPhoto.setAttribute('src', car.photo)
@@ -126,17 +127,17 @@ function renderSelectedCar(car) {
   $nameField.setAttribute('type', 'text')//8
   $nameField.setAttribute('name', 'name')//8
   $nameField.setAttribute('placeholder', 'Name')//8
-  $nameField.setAttribute('id', car.id)
+  $nameField.setAttribute('id', car.vehicleId)
   $hiddenId.setAttribute('type', 'hidden')
-  $hiddenId.setAttribute('name', 'id')
-  $hiddenId.setAttribute('value', car.id)
+  $hiddenId.setAttribute('name', 'vehicleId')
+  $hiddenId.setAttribute('value', car.vehicleId)
   $commentsField.setAttribute('type', 'text')//11
   $commentsField.setAttribute('name', 'comments')//11
-  $commentsField.setAttribute('id', car.id)
+  $commentsField.setAttribute('id', car.vehicleId)
   $commentsField.setAttribute('cols', 40)//11
   $commentsField.setAttribute('rows', 5)//11
   $commentsField.setAttribute('placeholder', 'Comments')//11
-  $submitButton.setAttribute('id', car.id)
+  $submitButton.setAttribute('id', car.vehicleId)
 
   $column.appendChild($media)
   $media.appendChild($mediaLeftDiv)
