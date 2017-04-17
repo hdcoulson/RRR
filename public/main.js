@@ -94,6 +94,7 @@ function renderSelectedCar(car) {
   var $nameLabel = document.createElement('label')//6
   var $nameFieldLabel = document.createElement('label')//7
   var $nameField = document.createElement('input')//8
+  var $hiddenId = document.createElement('input')//8.5
   var $commentsLabel = document.createElement('label')//9
   var $commentsFieldLabel = document.createElement('label')//10
   var $commentsField = document.createElement('textarea')//11
@@ -126,6 +127,9 @@ function renderSelectedCar(car) {
   $nameField.setAttribute('name', 'name')//8
   $nameField.setAttribute('placeholder', 'Name')//8
   $nameField.setAttribute('id', car.id)
+  $hiddenId.setAttribute('type', 'hidden')
+  $hiddenId.setAttribute('name', 'id')
+  $hiddenId.setAttribute('value', car.id)
   $commentsField.setAttribute('type', 'text')//11
   $commentsField.setAttribute('name', 'comments')//11
   $commentsField.setAttribute('id', car.id)
@@ -149,25 +153,12 @@ function renderSelectedCar(car) {
   $commentsForm.appendChild($nameLabel)
   $commentsForm.appendChild($nameFieldLabel)
   $nameFieldLabel.appendChild($nameField)
+  $nameFieldLabel.appendChild($hiddenId)
   $commentsForm.appendChild($commentsLabel)
   $commentsForm.appendChild($commentsFieldLabel)
   $commentsFieldLabel.appendChild($commentsField)
   $commentsForm.appendChild($submitButtonLabel)
   $submitButtonLabel.appendChild($submitButton)
-
-  // var $commentForm = document.querySelector('#comments')
-  // // console.log($commentForm)
-  //
-  // $commentForm.addEventListener('submit', function (event) {
-  //   event.preventDefault()
-  //
-  //   var commentFormData = new FormData($commentForm)
-  //
-  //   for (var response of commentFormData.entries()) {
-  //     console.log(response[0], response[1])
-  //     }
-  //   })
-
 
   return $column
 }

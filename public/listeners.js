@@ -20,17 +20,24 @@ document.addEventListener('click', function(event) {
   }
   else if(event.target.classList.contains('submit')){
   var $commentForm = document.querySelector('#comments')
-  // console.log($commentForm)
 
   $commentForm.addEventListener('submit', function (event) {
     event.preventDefault()
 
     var commentFormData = new FormData($commentForm)
 
+    var comment = {}
     for (var response of commentFormData.entries()) {
-      testArray.push(response[0], response[1])
-      // console.log(response[0], response[1])
+      comment[response[0]] = response[1]
       }
+      var userComment = {
+        method: 'POST',
+        headers: new Headers ({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(comment)
+      }
+      fetch('/comments', userComment)
     })
     }
   })
