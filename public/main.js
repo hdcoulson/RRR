@@ -125,11 +125,14 @@ function renderSelectedCar(car) {
   $nameField.setAttribute('type', 'text')//8
   $nameField.setAttribute('name', 'name')//8
   $nameField.setAttribute('placeholder', 'Name')//8
+  $nameField.setAttribute('id', car.id)
   $commentsField.setAttribute('type', 'text')//11
   $commentsField.setAttribute('name', 'comments')//11
+  $commentsField.setAttribute('id', car.id)
   $commentsField.setAttribute('cols', 40)//11
   $commentsField.setAttribute('rows', 5)//11
   $commentsField.setAttribute('placeholder', 'Comments')//11
+  $submitButton.setAttribute('id', car.id)
 
   $column.appendChild($media)
   $media.appendChild($mediaLeftDiv)
@@ -151,6 +154,20 @@ function renderSelectedCar(car) {
   $commentsFieldLabel.appendChild($commentsField)
   $commentsForm.appendChild($submitButtonLabel)
   $submitButtonLabel.appendChild($submitButton)
+
+  // var $commentForm = document.querySelector('#comments')
+  // // console.log($commentForm)
+  //
+  // $commentForm.addEventListener('submit', function (event) {
+  //   event.preventDefault()
+  //
+  //   var commentFormData = new FormData($commentForm)
+  //
+  //   for (var response of commentFormData.entries()) {
+  //     console.log(response[0], response[1])
+  //     }
+  //   })
+
 
   return $column
 }

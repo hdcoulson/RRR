@@ -5,8 +5,8 @@ document.addEventListener('click', function(event) {
   var $welcome = document.querySelector('#welcome.container')
   var $clickedItemId = event.target.id
 
-  var test = fetch('/cars' + '/' + $clickedItemId)
-  test.then(function(response) {
+  var clickedCar = fetch('/cars' + '/' + $clickedItemId)
+  clickedCar.then(function(response) {
     return response.json()
   })
     .then(function(car) {
@@ -28,7 +28,8 @@ document.addEventListener('click', function(event) {
     var commentFormData = new FormData($commentForm)
 
     for (var response of commentFormData.entries()) {
-      console.log(response[0], response[1])
+      testArray.push(response[0], response[1])
+      // console.log(response[0], response[1])
       }
     })
     }
@@ -45,3 +46,5 @@ document.addEventListener('click', function(event) {
     $carDetails.innerHTML=''
   }
 })
+
+var testArray = []
