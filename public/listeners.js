@@ -53,5 +53,3 @@ document.addEventListener('click', function(event) {
     $carDetails.innerHTML=''
   }
 })
-
-var testArray = []
