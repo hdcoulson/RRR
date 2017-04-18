@@ -171,16 +171,17 @@ function renderFilteredComments(comment) {
   var $media = document.createElement('div')
   var $mediaBody = document.createElement('div')
   var $mediaHeading = document.createElement('h4')
-  var $commentName = document.createElement('h3')
+  var $commentName = document.createElement('h5')
   var $commentBody = document.createElement('p')
 
   //textContent
-  $mediaHeading.textContent = 'Owner comments'
-  $commentName.textContent = comment.nameField
+  $mediaHeading.textContent = 'Owner comment'
+  $commentName.textContent = comment.name
   $commentBody.textContent = comment.comments
 
   //classList
   $column.classList.add('col-sm-12')
+  $column.classList.add('commentsDiv')
   $media.classList.add('media')
   $mediaHeading.classList.add('media-heading')
   $mediaBody.classList.add('media-body')

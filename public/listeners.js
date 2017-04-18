@@ -17,6 +17,19 @@ document.addEventListener('click', function(event) {
       $listView.setAttribute('class', 'hidden')
       $carDetails.innerHTML=''
       $carDetails.appendChild($car)
+//Owner comments
+      var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
+      clickedCarComments.then(function(response) {
+        return response.json()
+      })
+        .then(function(comments) {
+          var $commentsPlacement = document.querySelector('.proReview')
+          var selectedCommentsArray = comments
+          selectedCommentsArray.forEach(function(comment) {
+            var filteredComments = renderFilteredComments(comment)
+            $commentsPlacement.appendChild(filteredComments)
+          })
+        })
     })
   }
   // Submit user comment
@@ -42,8 +55,6 @@ document.addEventListener('click', function(event) {
       fetch('/comments', userComment)
     })
     }
-    // render placeholder comments here as a .then?
-    // if comments !== null, then render comments
   })
 
 

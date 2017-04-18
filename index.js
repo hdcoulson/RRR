@@ -38,7 +38,7 @@ var comments = [
   {
     vehicleId: 1,
     name: 'Jon Doe',
-    comments: 'Honda CR-V review #1'
+    comments: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   },
   {
     vehicleId: 2,
@@ -48,7 +48,7 @@ var comments = [
   {
     vehicleId: 1,
     name: 'Bob Doe',
-    comments: 'Another Honda CR-V review'
+    comments: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   }
 ]
 
@@ -74,15 +74,6 @@ app.post('/comments', function(req, res) {
 app.get('/comments', function(req, res) {
   res.json(comments)
 })
-
-// app.get('/comments/:id', function(req, res) {
-//   function getComment(comment) {
-//     var reqId = req.params.id
-//     return comment.id.toString() === reqId
-//   }
-//   var selectedComment = comments.filter(getComment)
-//   res.json(selectedComment[0])
-// })
 
 app.get('/comments/:vehicleId', function(req, res) {
   function isVehicleComment(comment) {
