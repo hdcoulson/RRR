@@ -1,4 +1,5 @@
 document.addEventListener('click', function(event) {
+// Create details page
   if(event.target.classList.contains('details')){
   var $listView = document.querySelector('#list-view.container')
   var $carDetails = document.querySelector('#car-details.container')
@@ -18,6 +19,7 @@ document.addEventListener('click', function(event) {
       $carDetails.appendChild($car)
     })
   }
+  // Submit user comment
   else if(event.target.classList.contains('submit')){
   var $commentForm = document.querySelector('#comments')
 
@@ -40,6 +42,8 @@ document.addEventListener('click', function(event) {
       fetch('/comments', userComment)
     })
     }
+    // render placeholder comments here as a .then?
+    // if comments !== null, then render comments
   })
 
 

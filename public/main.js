@@ -163,3 +163,14 @@ function renderSelectedCar(car) {
 
   return $column
 }
+
+function renderFilteredComments(comment) {
+  //createElement
+  var $column = document.createElement('div')
+  //textContent
+  //classList
+  $column.classList.add('col-sm-12')
+  //setAttribute
+  //appendChild
+  $column.appendChild(???)
+}
