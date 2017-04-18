@@ -87,7 +87,7 @@ function renderSelectedCar(car) {
   var $carPhoto = document.createElement('img')
   var $mediaBodyDiv = document.createElement('div')
   var $mediaBody = document.createElement('div')
-  var $carName = document.createElement('h4')
+  var $carName = document.createElement('h3')
   var $proReview = document.createElement('p')
   var $comments = document.createElement('div')//1
   var $commentsForm = document.createElement('form')//5
