@@ -164,13 +164,36 @@ function renderSelectedCar(car) {
   return $column
 }
 
+//owner comments
 function renderFilteredComments(comment) {
   //createElement
   var $column = document.createElement('div')
+  var $media = document.createElement('div')
+  var $mediaBody = document.createElement('div')
+  var $mediaHeading = document.createElement('h4')
+  var $commentName = document.createElement('h3')
+  var $commentBody = document.createElement('p')
+
   //textContent
+  $mediaHeading.textContent = 'Owner comments'
+  $commentName.textContent = comment.nameField
+  $commentBody.textContent = comment.comments
+
   //classList
   $column.classList.add('col-sm-12')
+  $media.classList.add('media')
+  $mediaHeading.classList.add('media-heading')
+  $mediaBody.classList.add('media-body')
+
   //setAttribute
+
   //appendChild
-  $column.appendChild(???)
+  $column.appendChild($media)
+  $media.appendChild($mediaBody)
+  $mediaBody.appendChild($mediaHeading)
+  $mediaBody.appendChild($commentName)
+  $mediaBody.appendChild($commentBody)
+
+
+  return $column
 }
