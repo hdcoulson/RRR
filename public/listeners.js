@@ -1,15 +1,16 @@
 document.addEventListener('click', function(event) {
 // Create details page
   if(event.target.classList.contains('details')){
-  var $listView = document.querySelector('#list-view.container')
-  var $carDetails = document.querySelector('#car-details.container')
-  var $welcome = document.querySelector('#welcome.container')
-  var $clickedItemId = event.target.id
+    var $listView = document.querySelector('#list-view.container')
+    var $carDetails = document.querySelector('#car-details.container')
+    var $welcome = document.querySelector('#welcome.container')
+    var $clickedItemId = event.target.id
 
-  var clickedCar = fetch('/cars' + '/' + $clickedItemId)
-  clickedCar.then(function(response) {
-    return response.json()
-  })
+    var clickedCar = fetch('/cars' + '/' + $clickedItemId)
+    clickedCar
+    .then(function(response) {
+      return response.json()
+    })
     .then(function(car) {
       var selectedCar = car
       var $car = renderSelectedCar(selectedCar)
@@ -17,31 +18,30 @@ document.addEventListener('click', function(event) {
       $listView.setAttribute('class', 'hidden')
       $carDetails.innerHTML=''
       $carDetails.appendChild($car)
-//Owner comments
-      var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
-      clickedCarComments.then(function(response) {
-        return response.json()
+//Display owner comments
+    var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
+    clickedCarComments
+    .then(function(response) {
+      return response.json()
+    })
+    .then(function(comments) {
+      var $commentsPlacement = document.querySelector('.proReview')
+      var selectedCommentsArray = comments
+
+      selectedCommentsArray.forEach(function(comment) {
+        var filteredComment = renderFilteredComment(comment)
+        $commentsPlacement.appendChild(filteredComment)
       })
-        .then(function(comments) {
-          var $commentsPlacement = document.querySelector('.proReview')
-          var selectedCommentsArray = comments
-          selectedCommentsArray.forEach(function(comment) {
-            var filteredComments = renderFilteredComments(comment)
-            $commentsPlacement.appendChild(filteredComments)
-          })
-        })
+    })
     })
   }
   // Submit user comment
   else if(event.target.classList.contains('submit')){
-  var $commentForm = document.querySelector('#comments')
-
-  $commentForm.addEventListener('submit', function (event) {
+    var $commentForm = document.querySelector('#commentsForm')
     event.preventDefault()
-
     var commentFormData = new FormData($commentForm)
-
     var comment = {}
+
     for (var response of commentFormData.entries()) {
       comment[response[0]] = response[1]
       }
@@ -53,7 +53,13 @@ document.addEventListener('click', function(event) {
         body: JSON.stringify(comment)
       }
       fetch('/comments', userComment)
-    })
+      .then(function() {
+        document.getElementById("commentsForm").reset();
+        var $commentsPlacement = document.querySelector('.proReview')
+        var filteredComment = renderFilteredComment(comment)
+        $commentsPlacement.appendChild(filteredComment)
+        // console.log(comment)
+      })
     }
   })
 
@@ -63,6 +69,7 @@ document.addEventListener('click', function(event) {
     var $listView = document.querySelector('#list-view')
     var $carDetails = document.querySelector('#car-details')
     var $welcome = document.querySelector('#welcome')
+
     $welcome.setAttribute('class', 'container')
     $listView.setAttribute('class', 'container')
     $carDetails.innerHTML=''

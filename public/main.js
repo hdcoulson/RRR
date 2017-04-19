@@ -55,28 +55,6 @@ function renderCar(car) {
   })
 }
 
-// <!-- <div class="col-sm-12">//1
-//   <div class="col-sm-4">//2
-//   </div>
-//   <div class="col-sm-8">//3
-//     <div class="container">//4
-//       <form id="comments">//5--AA
-//         <label>Name:</label>//6
-//         <label>//7
-//           <input type="text" name="name" placeholder="Name">//8--AA
-//         </label>
-//         <label>Comments:</label>//9
-//         <label>//10
-//           <textarea type="text" name="comments" cols="40" rows="5" placeholder="Comments"></textarea>//11--AA
-//         </label>
-//         <label>//12
-//           <button type="submit">Submit</button>//13--AA
-//         </label>
-//       </form>
-//     </div>
-//     </div>
-//   </div> -->
-
 //details page
 function renderSelectedCar(car) {
   var $column = document.createElement('div')
@@ -123,7 +101,7 @@ function renderSelectedCar(car) {
 
   $href.setAttribute('href', '#')
   $carPhoto.setAttribute('src', car.photo)
-  $commentsForm.setAttribute('id', 'comments')//5
+  $commentsForm.setAttribute('id', 'commentsForm')//5
   $nameField.setAttribute('type', 'text')//8
   $nameField.setAttribute('name', 'name')//8
   $nameField.setAttribute('placeholder', 'Name')//8
@@ -165,8 +143,8 @@ function renderSelectedCar(car) {
 }
 
 //owner comments
-function renderFilteredComments(comment) {
-  //createElement
+function renderFilteredComment(comment) {
+
   var $column = document.createElement('div')
   var $media = document.createElement('div')
   var $mediaBody = document.createElement('div')
@@ -174,21 +152,19 @@ function renderFilteredComments(comment) {
   var $commentName = document.createElement('h5')
   var $commentBody = document.createElement('p')
 
-  //textContent
+
   $mediaHeading.textContent = 'Owner comment'
   $commentName.textContent = comment.name
   $commentBody.textContent = comment.comments
 
-  //classList
+
   $column.classList.add('col-sm-12')
   $column.classList.add('commentsDiv')
   $media.classList.add('media')
   $mediaHeading.classList.add('media-heading')
   $mediaBody.classList.add('media-body')
 
-  //setAttribute
 
-  //appendChild
   $column.appendChild($media)
   $media.appendChild($mediaBody)
   $mediaBody.appendChild($mediaHeading)
