@@ -205,7 +205,6 @@ function renderFilteredComment(comment) {
   return $column
 }
 
-
 // reduce example code for ratings
 // var ratings = [5, 4, 5, 5]
 // test.reduce(function (a, b) {
