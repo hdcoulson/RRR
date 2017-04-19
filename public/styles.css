@@ -2,3 +2,16 @@ label {
   display: block;
   margin: 10px;
 }
+
+.commentsDiv {
+  padding: 20px;
+}
+
+.slogan {
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+#car-details {
+  padding-top: 50px;
+}

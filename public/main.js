@@ -34,10 +34,10 @@ function renderCar(car) {
   $carPhoto.classList.add('img-responsive')
 
   $carPhoto.setAttribute('src', car.photo)//4
-  $carPhoto.setAttribute('id', car.id)
+  $carPhoto.setAttribute('id', car.vehicleId)
   $button.setAttribute('href', '#')//9
-  $button.setAttribute('id', car.id)
-  $carName.setAttribute('id', car.id)
+  $button.setAttribute('id', car.vehicleId)
+  $carName.setAttribute('id', car.vehicleId)
 
   $column.appendChild($thumbnailClass)
   $thumbnailClass.appendChild($carPhoto)
@@ -55,28 +55,6 @@ function renderCar(car) {
   })
 }
 
-// <!-- <div class="col-sm-12">//1
-//   <div class="col-sm-4">//2
-//   </div>
-//   <div class="col-sm-8">//3
-//     <div class="container">//4
-//       <form id="comments">//5--AA
-//         <label>Name:</label>//6
-//         <label>//7
-//           <input type="text" name="name" placeholder="Name">//8--AA
-//         </label>
-//         <label>Comments:</label>//9
-//         <label>//10
-//           <textarea type="text" name="comments" cols="40" rows="5" placeholder="Comments"></textarea>//11--AA
-//         </label>
-//         <label>//12
-//           <button type="submit">Submit</button>//13--AA
-//         </label>
-//       </form>
-//     </div>
-//     </div>
-//   </div> -->
-
 //details page
 function renderSelectedCar(car) {
   var $column = document.createElement('div')
@@ -87,7 +65,7 @@ function renderSelectedCar(car) {
   var $carPhoto = document.createElement('img')
   var $mediaBodyDiv = document.createElement('div')
   var $mediaBody = document.createElement('div')
-  var $carName = document.createElement('h4')
+  var $carName = document.createElement('h3')
   var $proReview = document.createElement('p')
   var $comments = document.createElement('div')//1
   var $commentsForm = document.createElement('form')//5
@@ -119,24 +97,25 @@ function renderSelectedCar(car) {
   $carName.classList.add('media-heading')
   $comments.classList.add('col-sm-12')//1
   $submitButton.classList.add('submit')
+  $proReview.classList.add('proReview')
 
   $href.setAttribute('href', '#')
   $carPhoto.setAttribute('src', car.photo)
-  $commentsForm.setAttribute('id', 'comments')//5
+  $commentsForm.setAttribute('id', 'commentsForm')//5
   $nameField.setAttribute('type', 'text')//8
   $nameField.setAttribute('name', 'name')//8
   $nameField.setAttribute('placeholder', 'Name')//8
-  $nameField.setAttribute('id', car.id)
+  $nameField.setAttribute('id', car.vehicleId)
   $hiddenId.setAttribute('type', 'hidden')
-  $hiddenId.setAttribute('name', 'id')
-  $hiddenId.setAttribute('value', car.id)
+  $hiddenId.setAttribute('name', 'vehicleId')
+  $hiddenId.setAttribute('value', car.vehicleId)
   $commentsField.setAttribute('type', 'text')//11
   $commentsField.setAttribute('name', 'comments')//11
-  $commentsField.setAttribute('id', car.id)
+  $commentsField.setAttribute('id', car.vehicleId)
   $commentsField.setAttribute('cols', 40)//11
   $commentsField.setAttribute('rows', 5)//11
   $commentsField.setAttribute('placeholder', 'Comments')//11
-  $submitButton.setAttribute('id', car.id)
+  $submitButton.setAttribute('id', car.vehicleId)
 
   $column.appendChild($media)
   $media.appendChild($mediaLeftDiv)
@@ -159,6 +138,39 @@ function renderSelectedCar(car) {
   $commentsFieldLabel.appendChild($commentsField)
   $commentsForm.appendChild($submitButtonLabel)
   $submitButtonLabel.appendChild($submitButton)
+
+  return $column
+}
+
+//owner comments
+function renderFilteredComment(comment) {
+
+  var $column = document.createElement('div')
+  var $media = document.createElement('div')
+  var $mediaBody = document.createElement('div')
+  var $mediaHeading = document.createElement('h4')
+  var $commentName = document.createElement('h5')
+  var $commentBody = document.createElement('p')
+
+
+  $mediaHeading.textContent = 'Owner comment'
+  $commentName.textContent = comment.name
+  $commentBody.textContent = comment.comments
+
+
+  $column.classList.add('col-sm-12')
+  $column.classList.add('commentsDiv')
+  $media.classList.add('media')
+  $mediaHeading.classList.add('media-heading')
+  $mediaBody.classList.add('media-body')
+
+
+  $column.appendChild($media)
+  $media.appendChild($mediaBody)
+  $mediaBody.appendChild($mediaHeading)
+  $mediaBody.appendChild($commentName)
+  $mediaBody.appendChild($commentBody)
+
 
   return $column
 }
