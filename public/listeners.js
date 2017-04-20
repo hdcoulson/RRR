@@ -49,6 +49,7 @@ document.addEventListener('click', function(event) {
       comment[response[0]] = response[1]
     }
     comment.stars = parseInt(comment.stars, 10)
+    comment.vehicleId = parseInt(comment.vehicleId, 10)
 
     var userComment = {
       method: 'POST',
@@ -64,20 +65,21 @@ document.addEventListener('click', function(event) {
         var filteredComment = renderFilteredComment(comment)
         $commentsPlacement.appendChild(filteredComment)
   //Refreshed Owner Rating field
-      // var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
-      // clickedCarComments
-      // .then(function(response) {
-      //   return response.json()
-      // })
-      // .then(function(comment) {
-      //   console.log(comment)
-      //   var $stars = renderStarRating(comment)
-      //   console.log($stars)
-      //   $ownerRatingLocation = document.querySelector('.average-rating')
-      //   $ownerRatingLocation.innerHTML= ''
-      //   $ownerRatingLocation.appendChild($stars)
-      // })
-      //
+      var $clickedItemId = event.target.id
+      var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
+      clickedCarComments
+      .then(function(response) {
+        return response.json()
+      })
+      .then(function(comment) {
+        console.log(comment)
+        var $stars = renderStarRating(comment)
+        console.log($stars)
+        $ownerRatingLocation = document.querySelector('.average-rating')
+        $ownerRatingLocation.innerHTML = ''
+        $ownerRatingLocation.innerHTML = $stars
+      })
+
       })
     }
   })
