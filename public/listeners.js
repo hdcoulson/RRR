@@ -1,6 +1,6 @@
 document.addEventListener('click', function(event) {
 // Create details page
-  if(event.target.classList.contains('details')){
+  if (event.target.classList.contains('details')) {
     var $listView = document.querySelector('#list-view.container')
     var $carDetails = document.querySelector('#car-details.container')
     var $welcome = document.querySelector('#welcome.container')
@@ -28,15 +28,18 @@ document.addEventListener('click', function(event) {
       var $commentsPlacement = document.querySelector('.proReview')
       var selectedCommentsArray = comments
 
-      selectedCommentsArray.forEach(function(comment) {
-        var filteredComment = renderFilteredComment(comment)
+      selectedCommentsArray.forEach(function(comments) {
+        var filteredComment = renderFilteredComment(comments)
         $commentsPlacement.appendChild(filteredComment)
+
       })
+      var starRatings = renderStarRatingDOMElement(renderStarRating(comments))
+      return starRatings
     })
     })
   }
   // Submit user comment
-  else if(event.target.classList.contains('submit')){
+  else if(event.target.classList.contains('submit')) {
     var $commentForm = document.querySelector('#commentsForm')
     event.preventDefault()
     var commentFormData = new FormData($commentForm)
@@ -44,21 +47,39 @@ document.addEventListener('click', function(event) {
 
     for (var response of commentFormData.entries()) {
       comment[response[0]] = response[1]
-      }
-      var userComment = {
-        method: 'POST',
-        headers: new Headers ({
-          'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify(comment)
-      }
-      fetch('/comments', userComment)
+    }
+    comment.stars = parseInt(comment.stars, 10)
+    comment.vehicleId = parseInt(comment.vehicleId, 10)
+
+    var userComment = {
+      method: 'POST',
+      headers: new Headers ({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(comment)
+    }
+    fetch('/comments', userComment)
       .then(function() {
         document.getElementById("commentsForm").reset();
         var $commentsPlacement = document.querySelector('.proReview')
         var filteredComment = renderFilteredComment(comment)
         $commentsPlacement.appendChild(filteredComment)
-        // console.log(comment)
+  //Refreshed Owner Rating field
+      var $clickedItemId = event.target.id
+      var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
+      clickedCarComments
+      .then(function(response) {
+        return response.json()
+      })
+      .then(function(comment) {
+        console.log(comment)
+        var $stars = renderStarRating(comment)
+        console.log($stars)
+        $ownerRatingLocation = document.querySelector('.average-rating')
+        $ownerRatingLocation.innerHTML = ''
+        $ownerRatingLocation.innerHTML = $stars
+      })
+
       })
     }
   })

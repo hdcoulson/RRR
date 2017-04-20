@@ -67,24 +67,39 @@ function renderSelectedCar(car) {
   var $mediaBody = document.createElement('div')
   var $carName = document.createElement('h3')
   var $proReview = document.createElement('p')
-  var $comments = document.createElement('div')//1
-  var $commentsForm = document.createElement('form')//5
-  var $nameLabel = document.createElement('label')//6
-  var $nameFieldLabel = document.createElement('label')//7
-  var $nameField = document.createElement('input')//8
-  var $hiddenId = document.createElement('input')//8.5
-  var $commentsLabel = document.createElement('label')//9
-  var $commentsFieldLabel = document.createElement('label')//10
-  var $commentsField = document.createElement('textarea')//11
-  var $submitButtonLabel = document.createElement('label')//12
-  var $submitButton = document.createElement('button')//13
+  var $comments = document.createElement('div')
+  var $commentsForm = document.createElement('form')
+  var $nameLabel = document.createElement('label')
+  var $nameFieldLabel = document.createElement('label')
+  var $nameField = document.createElement('input')
+  var $hiddenId = document.createElement('input')
+  var $commentsLabel = document.createElement('label')
+  var $commentsFieldLabel = document.createElement('label')
+  var $commentsField = document.createElement('textarea')
+  var $ratingLabelName = document.createElement('label')
+  var $selectId = document.createElement('select')
+  var $optionValueBlank = document.createElement('option')
+  var $optionValueOne = document.createElement('option')
+  var $optionValueTwo = document.createElement('option')
+  var $optionValueThree = document.createElement('option')
+  var $optionValueFour = document.createElement('option')
+  var $optionValueFive = document.createElement('option')
+  var $submitButtonLabel = document.createElement('label')
+  var $submitButton = document.createElement('button')
 
 
   $carName.textContent = car.make + ' ' + car.model
   $proReview.textContent = car.proReview
-  $nameLabel.textContent = 'Name:'//6
-  $commentsLabel.textContent = 'Comments:'//9
+  $nameLabel.textContent = 'Name:'
+  $commentsLabel.textContent = 'Comments:'
   $submitButton.textContent = 'submit'
+  $ratingLabelName.textContent = 'Stars' + '   '
+  $optionValueBlank.textContent = '---'
+  $optionValueOne.textContent = 1
+  $optionValueTwo.textContent = 2
+  $optionValueThree.textContent = 3
+  $optionValueFour.textContent = 4
+  $optionValueFive.textContent = 5
 
   $column.classList.add('col-sm-12')
   $media.classList.add('media')
@@ -93,29 +108,34 @@ function renderSelectedCar(car) {
   $mediaLeftDiv.classList.add('col-sm-4')
   $mediaBodyDiv.classList.add('col-sm-8')
   $carPhoto.classList.add('img-responsive')
+  $mediaLeftDiv.classList.add('carPhotoDiv')
   $mediaBody.classList.add('media-body')
   $carName.classList.add('media-heading')
-  $comments.classList.add('col-sm-12')//1
+  $carName.classList.add('carName')
+  $comments.classList.add('col-sm-12')
   $submitButton.classList.add('submit')
   $proReview.classList.add('proReview')
 
   $href.setAttribute('href', '#')
   $carPhoto.setAttribute('src', car.photo)
-  $commentsForm.setAttribute('id', 'commentsForm')//5
-  $nameField.setAttribute('type', 'text')//8
-  $nameField.setAttribute('name', 'name')//8
-  $nameField.setAttribute('placeholder', 'Name')//8
+  $carName.setAttribute('id', car.vehicleId)
+  $commentsForm.setAttribute('id', 'commentsForm')
+  $nameField.setAttribute('type', 'text')
+  $nameField.setAttribute('name', 'name')
+  $nameField.setAttribute('placeholder', 'Name')
   $nameField.setAttribute('id', car.vehicleId)
   $hiddenId.setAttribute('type', 'hidden')
   $hiddenId.setAttribute('name', 'vehicleId')
   $hiddenId.setAttribute('value', car.vehicleId)
-  $commentsField.setAttribute('type', 'text')//11
-  $commentsField.setAttribute('name', 'comments')//11
+  $commentsField.setAttribute('type', 'text')
+  $commentsField.setAttribute('name', 'comments')
   $commentsField.setAttribute('id', car.vehicleId)
-  $commentsField.setAttribute('cols', 40)//11
-  $commentsField.setAttribute('rows', 5)//11
-  $commentsField.setAttribute('placeholder', 'Comments')//11
+  $commentsField.setAttribute('cols', 40)
+  $commentsField.setAttribute('rows', 5)
+  $commentsField.setAttribute('placeholder', 'Comments')
   $submitButton.setAttribute('id', car.vehicleId)
+  $selectId.setAttribute('id', 'stars')
+  $selectId.setAttribute('name', 'stars')
 
   $column.appendChild($media)
   $media.appendChild($mediaLeftDiv)
@@ -136,8 +156,17 @@ function renderSelectedCar(car) {
   $commentsForm.appendChild($commentsLabel)
   $commentsForm.appendChild($commentsFieldLabel)
   $commentsFieldLabel.appendChild($commentsField)
-  $commentsForm.appendChild($submitButtonLabel)
   $submitButtonLabel.appendChild($submitButton)
+
+  $commentsForm.appendChild($ratingLabelName)
+  $commentsForm.appendChild($submitButtonLabel)
+  $ratingLabelName.appendChild($selectId)
+  $selectId.appendChild($optionValueBlank)
+  $selectId.appendChild($optionValueOne)
+  $selectId.appendChild($optionValueTwo)
+  $selectId.appendChild($optionValueThree)
+  $selectId.appendChild($optionValueFour)
+  $selectId.appendChild($optionValueFive)
 
   return $column
 }
@@ -151,11 +180,13 @@ function renderFilteredComment(comment) {
   var $mediaHeading = document.createElement('h4')
   var $commentName = document.createElement('h5')
   var $commentBody = document.createElement('p')
+  var $starRating = document.createElement('p')
 
 
   $mediaHeading.textContent = 'Owner comment'
   $commentName.textContent = comment.name
   $commentBody.textContent = comment.comments
+  $starRating.textContent = 'Star Rating:' + ' ' + comment.stars
 
 
   $column.classList.add('col-sm-12')
@@ -170,7 +201,52 @@ function renderFilteredComment(comment) {
   $mediaBody.appendChild($mediaHeading)
   $mediaBody.appendChild($commentName)
   $mediaBody.appendChild($commentBody)
+  $mediaBody.appendChild($starRating)
 
 
   return $column
+}
+
+
+function renderStarRatingDOMElement(rating) {
+  var $carPhotoDiv = document.querySelector('.carPhotoDiv')
+
+  var $ownerRatingsDiv = document.createElement('div')
+  var $ownerRatingsMedia = document.createElement('div')
+  var $ownerRatingsMediaBody = document.createElement('div')
+  var $ownerRatingsTitle = document.createElement('h4')
+  var $ownerRatingsBody = document.createElement('p')
+
+  $ownerRatingsTitle.textContent = "Average owner rating"
+  $ownerRatingsBody.textContent = rating
+
+  $ownerRatingsDiv.classList.add('col-sm-12')
+  $ownerRatingsMedia.classList.add('media')
+  $ownerRatingsMediaBody.classList.add('media-body')
+  $ownerRatingsTitle.classList.add('media-heading')
+  $ownerRatingsBody.classList.add('average-rating')
+
+  $ownerRatingsDiv.appendChild($ownerRatingsMedia)
+  $ownerRatingsMedia.appendChild($ownerRatingsMediaBody)
+  $ownerRatingsMediaBody.appendChild($ownerRatingsTitle)
+  $ownerRatingsMediaBody.appendChild($ownerRatingsBody)
+
+  $carPhotoDiv.appendChild($ownerRatingsDiv)
+}
+
+
+function renderStarRating(commentsArray) {
+  var onlyStarRatings = commentsArray.map(function(comment) {
+    return comment.stars
+  })
+
+  var sumOfAllStars = onlyStarRatings.reduce(function (a, b) {
+    return a + b
+  }, 0 )
+
+  var rating = sumOfAllStars/(commentsArray.length)
+
+  var roundedRating = (rating).toFixed(1)
+
+  return (roundedRating + '  ' + 'Stars')
 }
