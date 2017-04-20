@@ -40,30 +40,32 @@ document.addEventListener('click', function(event) {
     })
   }
   // Submit user comment
-  else if(event.target.classList.contains('submit')){
+  else if(event.target.classList.contains('submit')) {
     var $commentForm = document.querySelector('#commentsForm')
     event.preventDefault()
     var commentFormData = new FormData($commentForm)
     var comment = {}
-    console.log(comment)
+    // console.log(comment)
 
     for (var response of commentFormData.entries()) {
       comment[response[0]] = response[1]
-      }
-      var userComment = {
-        method: 'POST',
-        headers: new Headers ({
-          'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify(comment)
-      }
-      fetch('/comments', userComment)
+    }
+    comment.stars = parseInt(comment.stars, 10)
+
+    var userComment = {
+      method: 'POST',
+      headers: new Headers ({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(comment)
+    }
+    fetch('/comments', userComment)
       .then(function() {
         document.getElementById("commentsForm").reset();
         var $commentsPlacement = document.querySelector('.proReview')
         var filteredComment = renderFilteredComment(comment)
         $commentsPlacement.appendChild(filteredComment)
-        console.log(comment)
+        // console.log(comment)
       })
     }
   })

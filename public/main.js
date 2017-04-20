@@ -237,12 +237,15 @@ function renderStarRatingDOMElement(rating) {
 function renderStarRating(commentsArray) {
   var onlyStarRatings = commentsArray.map(function(comment) {
     return comment.stars
-    })
-    // console.log(onlyStarRatings)
+  })
+
   var sumOfAllStars = onlyStarRatings.reduce(function (a, b) {
     return a + b
-    }, 0 )
-    console.log(sumOfAllStars)
+  }, 0 )
+
   var rating = sumOfAllStars/(commentsArray.length)
-    return rating
+
+  var roundedRating = (rating).toFixed(1)
+
+  return roundedRating
 }
