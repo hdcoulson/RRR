@@ -218,12 +218,13 @@ function renderStarRatingDOMElement(rating) {
   var $ownerRatingsBody = document.createElement('p')
 
   $ownerRatingsTitle.textContent = "Average owner rating"
-  $ownerRatingsBody.textContent = rating + ' ' + "Stars"
+  $ownerRatingsBody.textContent = rating
 
   $ownerRatingsDiv.classList.add('col-sm-12')
   $ownerRatingsMedia.classList.add('media')
   $ownerRatingsMediaBody.classList.add('media-body')
   $ownerRatingsTitle.classList.add('media-heading')
+  $ownerRatingsBody.classList.add('average-rating')
 
   $ownerRatingsDiv.appendChild($ownerRatingsMedia)
   $ownerRatingsMedia.appendChild($ownerRatingsMediaBody)
@@ -247,5 +248,5 @@ function renderStarRating(commentsArray) {
 
   var roundedRating = (rating).toFixed(1)
 
-  return roundedRating
+  return (roundedRating + '  ' + 'Stars')
 }

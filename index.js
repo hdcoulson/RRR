@@ -38,26 +38,26 @@ var comments = [
   {
     vehicleId: 1,
     name: 'Rick Astley',
-    comments: 'We\'re no strangers to love. You know the rules and so do I. A full commitments what Im thinking of. You wouldnt get this from any other guy. I just want to tell you how I\'m feeling. Gotta make you understand. Never gonna give you up, never gonna let you down. Never gonna run around and desert you. Never gonna make you cry, never gonna say goodbye. Never gonna tell a lie and hurt you.',
+    comments: 'The CR-V is no stranger to love. It knows the rules and so do I. A full commitment is what it needs. You wouldnt get this from any other small SUV. I just want to tell you how I\'m feeling. Gotta make you understand. It will never give you up, never let you down. It will never run around and desert you. The CR-V will never make you cry, never say goodbye. It will never tell a lie and hurt you.',
     stars: 5
   },
   {
     vehicleId: 2,
-    name: 'Jane Doe',
-    comments: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    stars: 4
-  },
-  {
-    vehicleId: 1,
-    name: 'Sam Smith',
-    comments: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    name: 'Jules Winnfield',
+    comments: 'The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, for he is truly his brother’s keeper and the finder of lost children.',
     stars: 4
   },
   {
     vehicleId: 3,
-    name: 'Sally Strange',
-    comments: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    stars: 2
+    name: 'Hodor',
+    comments: 'Hodor! Hodor. Hodor. Hodor? Hodor!!! Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. Hodor. ',
+    stars: 3
+  },
+  {
+    vehicleId: 1,
+    name: 'Dr. Emmett Brown',
+    comments: 'If my calculations are correct, when this baby hits 88 miles per hour... you\'re gonna see some serious shit.',
+    stars: 4
   }
 ]
 

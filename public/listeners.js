@@ -1,6 +1,6 @@
 document.addEventListener('click', function(event) {
 // Create details page
-  if (event.target.classList.contains('details')){
+  if (event.target.classList.contains('details')) {
     var $listView = document.querySelector('#list-view.container')
     var $carDetails = document.querySelector('#car-details.container')
     var $welcome = document.querySelector('#welcome.container')
@@ -31,7 +31,6 @@ document.addEventListener('click', function(event) {
       selectedCommentsArray.forEach(function(comments) {
         var filteredComment = renderFilteredComment(comments)
         $commentsPlacement.appendChild(filteredComment)
-        // console.log(comments)
 
       })
       var starRatings = renderStarRatingDOMElement(renderStarRating(comments))
@@ -45,7 +44,6 @@ document.addEventListener('click', function(event) {
     event.preventDefault()
     var commentFormData = new FormData($commentForm)
     var comment = {}
-    // console.log(comment)
 
     for (var response of commentFormData.entries()) {
       comment[response[0]] = response[1]
@@ -65,7 +63,21 @@ document.addEventListener('click', function(event) {
         var $commentsPlacement = document.querySelector('.proReview')
         var filteredComment = renderFilteredComment(comment)
         $commentsPlacement.appendChild(filteredComment)
-        // console.log(comment)
+  //Refreshed Owner Rating field
+      // var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
+      // clickedCarComments
+      // .then(function(response) {
+      //   return response.json()
+      // })
+      // .then(function(comment) {
+      //   console.log(comment)
+      //   var $stars = renderStarRating(comment)
+      //   console.log($stars)
+      //   $ownerRatingLocation = document.querySelector('.average-rating')
+      //   $ownerRatingLocation.innerHTML= ''
+      //   $ownerRatingLocation.appendChild($stars)
+      // })
+      //
       })
     }
   })
