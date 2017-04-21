@@ -1,5 +1,4 @@
 document.addEventListener('click', function(event) {
-// Create details page
   if (event.target.classList.contains('details')) {
     var $listView = document.querySelector('#list-view.container')
     var $carDetails = document.querySelector('#car-details.container')
@@ -20,7 +19,7 @@ document.addEventListener('click', function(event) {
         $listView.setAttribute('class', 'hidden')
         $carDetails.innerHTML=''
         $carDetails.appendChild($car)
-//Display owner comments
+
     var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
 
       clickedCarComments
@@ -40,7 +39,7 @@ document.addEventListener('click', function(event) {
       })
       })
   }
-  // Submit user comment
+
   else if (event.target.classList.contains('submit')) {
     var $commentForm = document.querySelector('#commentsForm')
     event.preventDefault()
@@ -68,7 +67,6 @@ document.addEventListener('click', function(event) {
         var $commentsPlacement = document.querySelector('.proReview')
         var filteredComment = renderFilteredComment(comment)
         $commentsPlacement.appendChild(filteredComment)
-  //Refreshed Owner Rating field
 
         var $clickedItemId = event.target.id
         var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)

@@ -137,6 +137,6 @@ app.get('/comments/:vehicleId', function(req, res) {
   res.json(vehicleComments)
 })
 
-console.log('Let\s do this!')//incorporate into listen
+console.log('Let\s do this!')
 
 app.listen(3000)

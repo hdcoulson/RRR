@@ -12,7 +12,6 @@ carsArray.then(function(response) {
     }
   })
 
-//list-view page
 function renderCar(car) {
   var $column = document.createElement('div')
   var $thumbnailClass = document.createElement('div')
@@ -50,7 +49,6 @@ function renderCar(car) {
   return $column
 }
 
-//details page
 function renderSelectedCar(car) {
   var $column = document.createElement('div')
   var $media = document.createElement('div')
@@ -166,7 +164,6 @@ function renderSelectedCar(car) {
   return $column
 }
 
-//owner comments
 function renderFilteredComment(comment) {
 
   var $column = document.createElement('div')
@@ -201,7 +198,6 @@ function renderFilteredComment(comment) {
 
   return $column
 }
-
 
 function renderStarRatingDOMElement(rating) {
   var $carPhotoDiv = document.querySelector('.carPhotoDiv')
