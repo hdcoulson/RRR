@@ -80,7 +80,6 @@ function renderSelectedCar(car) {
   var $submitButtonLabel = document.createElement('label')
   var $submitButton = document.createElement('button')
 
-
   $carName.textContent = car.make + ' ' + car.model
   $proReview.textContent = car.proReview
   $nameLabel.textContent = 'Name:'
@@ -174,12 +173,10 @@ function renderFilteredComment(comment) {
   var $commentBody = document.createElement('p')
   var $starRating = document.createElement('p')
 
-
   $mediaHeading.textContent = 'Owner comment'
   $commentName.textContent = comment.name
   $commentBody.textContent = comment.comments
   $starRating.textContent = 'Star Rating:' + ' ' + comment.stars
-
 
   $column.classList.add('col-sm-12')
   $column.classList.add('commentsDiv')
@@ -187,14 +184,12 @@ function renderFilteredComment(comment) {
   $mediaHeading.classList.add('media-heading')
   $mediaBody.classList.add('media-body')
 
-
   $column.appendChild($media)
   $media.appendChild($mediaBody)
   $mediaBody.appendChild($mediaHeading)
   $mediaBody.appendChild($commentName)
   $mediaBody.appendChild($commentBody)
   $mediaBody.appendChild($starRating)
-
 
   return $column
 }
@@ -225,7 +220,6 @@ function renderStarRatingDOMElement(rating) {
   $carPhotoDiv.appendChild($ownerRatingsDiv)
 }
 
-
 function renderStarRating(commentsArray) {
   var onlyStarRatings = commentsArray.map(function(comment) {
     return comment.stars
@@ -234,9 +228,7 @@ function renderStarRating(commentsArray) {
   var sumOfAllStars = onlyStarRatings.reduce(function (a, b) {
     return a + b
   }, 0 )
-
   var rating = sumOfAllStars/(commentsArray.length)
-
   var roundedRating = (rating).toFixed(1)
 
   return (roundedRating + '  ' + 'Stars')

@@ -86,7 +86,6 @@ document.addEventListener('click', function(event) {
     }
   })
 
-
 document.addEventListener('click', function(event) {
   if (event.target.id === 'back') {
     var $listView = document.querySelector('#list-view')
