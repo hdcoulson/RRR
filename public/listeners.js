@@ -17,7 +17,7 @@ document.addEventListener('click', function(event) {
 
         $welcome.setAttribute('class', 'hidden')
         $listView.setAttribute('class', 'hidden')
-        $carDetails.innerHTML=''
+        $carDetails.innerHTML = ''
         $carDetails.appendChild($car)
 
     var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
@@ -93,6 +93,6 @@ document.addEventListener('click', function(event) {
 
     $welcome.setAttribute('class', 'container')
     $listView.setAttribute('class', 'container')
-    $carDetails.innerHTML=''
+    $carDetails.innerHTML = ''
   }
 })
