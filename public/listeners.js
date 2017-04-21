@@ -34,8 +34,9 @@ document.addEventListener('click', function(event) {
           var filteredComment = renderFilteredComment(comments)
           $commentsPlacement.appendChild(filteredComment)
         })
-        var starRatings = renderStarRatingDOMElement(renderStarRating(comments))
-        return starRatings
+        var $carPhotoDiv = document.querySelector('.carPhotoDiv')
+        var $starRatings = renderStarRatingDOMElement(renderStarRating(comments))
+        $carPhotoDiv.appendChild($starRatings)
       })
       })
   }
@@ -75,9 +76,7 @@ document.addEventListener('click', function(event) {
           return response.json()
         })
         .then(function(comment) {
-          console.log(comment)
           var $stars = renderStarRating(comment)
-          console.log($stars)
           $ownerRatingLocation = document.querySelector('.average-rating')
           $ownerRatingLocation.innerHTML = ''
           $ownerRatingLocation.innerHTML = $stars

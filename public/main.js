@@ -195,7 +195,6 @@ function renderFilteredComment(comment) {
 }
 
 function renderStarRatingDOMElement(rating) {
-  var $carPhotoDiv = document.querySelector('.carPhotoDiv')
 
   var $ownerRatingsDiv = document.createElement('div')
   var $ownerRatingsMedia = document.createElement('div')
@@ -217,7 +216,7 @@ function renderStarRatingDOMElement(rating) {
   $ownerRatingsMediaBody.appendChild($ownerRatingsTitle)
   $ownerRatingsMediaBody.appendChild($ownerRatingsBody)
 
-  $carPhotoDiv.appendChild($ownerRatingsDiv)
+  return $ownerRatingsDiv
 }
 
 function renderStarRating(commentsArray) {
