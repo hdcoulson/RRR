@@ -246,7 +246,7 @@ function renderStarRating(commentsArray) {
   return (roundedRating + '  ' + 'Stars')
 }
 
-var starImages = [
+var starImagesArray = [
   {
     one: '1-star.png'
   },

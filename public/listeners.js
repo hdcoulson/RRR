@@ -41,7 +41,7 @@ document.addEventListener('click', function(event) {
       })
   }
   // Submit user comment
-  else if(event.target.classList.contains('submit')) {
+  else if (event.target.classList.contains('submit')) {
     var $commentForm = document.querySelector('#commentsForm')
     event.preventDefault()
 
@@ -90,7 +90,7 @@ document.addEventListener('click', function(event) {
 
 
 document.addEventListener('click', function(event) {
-  if(event.target.id === 'back') {
+  if (event.target.id === 'back') {
     var $listView = document.querySelector('#list-view')
     var $carDetails = document.querySelector('#car-details')
     var $welcome = document.querySelector('#welcome')
