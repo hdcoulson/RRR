@@ -5,7 +5,7 @@ carsArray.then(function(response) {
   return response.json()
 })
   .then(function(carsArray) {
-    for (var i = 0; i <carsArray.length; i++) {
+    for (var i = 0; i < carsArray.length; i++) {
       var currentCar = carsArray[i]
       var $car = renderCar(currentCar)
       $carsContainer.appendChild($car)
@@ -14,28 +14,28 @@ carsArray.then(function(response) {
 
 //list-view page
 function renderCar(car) {
-  var $column = document.createElement('div')//2
-  var $thumbnailClass = document.createElement('div')//3
-  var $carPhoto = document.createElement('img')//4
-  var $caption = document.createElement('div')//5
-  var $carName = document.createElement('h3')//6
-  var $description = document.createElement('p')//7
-  var $buttonDiv = document.createElement('p')//8
-  var $button = document.createElement('a')//9
+  var $column = document.createElement('div')
+  var $thumbnailClass = document.createElement('div')
+  var $carPhoto = document.createElement('img')
+  var $caption = document.createElement('div')
+  var $carName = document.createElement('h3')
+  var $description = document.createElement('p')
+  var $buttonDiv = document.createElement('p')
+  var $button = document.createElement('a')
 
-  $carName.textContent = car.make + ' ' + car.model//6
-  $description.textContent = car.description//7
+  $carName.textContent = car.make + ' ' + car.model
+  $description.textContent = car.description
   $button.textContent = 'Details'
 
-  $column.classList.add('col-sm-6', 'col-md-4')//2
-  $thumbnailClass.classList.add('thumbnail')//3
-  $caption.classList.add('caption')//5
-  $button.classList.add('btn', 'btn-primary','btn', 'btn-default', 'details')//9
+  $column.classList.add('col-sm-6', 'col-md-4')
+  $thumbnailClass.classList.add('thumbnail')
+  $caption.classList.add('caption')
+  $button.classList.add('btn', 'btn-primary','btn', 'btn-default', 'details')
   $carPhoto.classList.add('img-responsive')
 
-  $carPhoto.setAttribute('src', car.photo)//4
+  $carPhoto.setAttribute('src', car.photo)
   $carPhoto.setAttribute('id', car.vehicleId)
-  $button.setAttribute('href', '#')//9
+  $button.setAttribute('href', '#')
   $button.setAttribute('id', car.vehicleId)
   $carName.setAttribute('id', car.vehicleId)
 
@@ -48,11 +48,6 @@ function renderCar(car) {
   $buttonDiv.appendChild($button)
 
   return $column
-
-  carsArray.forEach(function (car) {
-    var $listView = document.querySelector('list-view')
-    $listView.appendChild(renderCar(car))
-  })
 }
 
 //details page
@@ -250,3 +245,21 @@ function renderStarRating(commentsArray) {
 
   return (roundedRating + '  ' + 'Stars')
 }
+
+var starImages = [
+  {
+    one: '1-star.png'
+  },
+  {
+    two: '2-stars.png'
+  },
+  {
+    three: '3-stars.png'
+  },
+  {
+    four: '4-stars.png'
+  },
+  {
+    five: '5-stars.png'
+  }
+]

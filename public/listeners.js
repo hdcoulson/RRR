@@ -8,9 +8,9 @@ document.addEventListener('click', function(event) {
 
     var clickedCar = fetch('/cars' + '/' + $clickedItemId)
     clickedCar
-    .then(function(response) {
-      return response.json()
-    })
+      .then(function(response) {
+        return response.json()
+      })
     .then(function(car) {
       var selectedCar = car
       var $car = renderSelectedCar(selectedCar)
