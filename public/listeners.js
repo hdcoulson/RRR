@@ -65,9 +65,9 @@ document.addEventListener('click', function(event) {
         var filteredComment = renderFilteredComment(comment)
         $commentsPlacement.appendChild(filteredComment)
   //Refreshed Owner Rating field
-      var $clickedItemId = event.target.id
-      var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
-      clickedCarComments
+        var $clickedItemId = event.target.id
+        var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
+        clickedCarComments
       .then(function(response) {
         return response.json()
       })
@@ -79,7 +79,6 @@ document.addEventListener('click', function(event) {
         $ownerRatingLocation.innerHTML = ''
         $ownerRatingLocation.innerHTML = $stars
       })
-
       })
     }
   })
