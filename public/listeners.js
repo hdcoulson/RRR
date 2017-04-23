@@ -1,4 +1,4 @@
-document.addEventListener('click', function(event) {
+document.addEventListener('click',(event) => {
   if (event.target.classList.contains('details')) {
     var $listView = document.querySelector('#list-view.container')
     var $carDetails = document.querySelector('#car-details.container')
@@ -7,11 +7,11 @@ document.addEventListener('click', function(event) {
 
     var clickedCar = fetch('/cars' + '/' + $clickedItemId)
     clickedCar
-      .then(function(response) {
+      .then((response) => {
         return response.json()
       })
 
-      .then(function(car) {
+      .then((car) => {
         var selectedCar = car
         var $car = renderSelectedCar(selectedCar)
 
@@ -23,14 +23,14 @@ document.addEventListener('click', function(event) {
     var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
 
       clickedCarComments
-      .then(function(response) {
+      .then((response) => {
         return response.json()
       })
-      .then(function(comments) {
+      .then((comments) => {
         var $commentsPlacement = document.querySelector('.proReview')
         var selectedCommentsArray = comments
 
-        selectedCommentsArray.forEach(function(comments) {
+        selectedCommentsArray.forEach((comments) => {
           var filteredComment = renderFilteredComment(comments)
           $commentsPlacement.appendChild(filteredComment)
         })
@@ -63,7 +63,7 @@ document.addEventListener('click', function(event) {
     }
 
     fetch('/comments', userComment)
-      .then(function() {
+      .then(() => {
         document.getElementById("commentsForm").reset();
         var $commentsPlacement = document.querySelector('.proReview')
         var filteredComment = renderFilteredComment(comment)
@@ -72,10 +72,10 @@ document.addEventListener('click', function(event) {
         var $clickedItemId = event.target.id
         var clickedCarComments = fetch('/comments' + '/' + $clickedItemId)
         clickedCarComments
-        .then(function(response) {
+        .then((response) => {
           return response.json()
         })
-        .then(function(comment) {
+        .then((comment) => {
           var $stars = renderStarRating(comment)
           $ownerRatingLocation = document.querySelector('.average-rating')
           $ownerRatingLocation.innerHTML = ''
@@ -85,7 +85,7 @@ document.addEventListener('click', function(event) {
     }
   })
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click',(event) => {
   if (event.target.id === 'back') {
     var $listView = document.querySelector('#list-view')
     var $carDetails = document.querySelector('#car-details')

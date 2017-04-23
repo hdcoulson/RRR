@@ -68,7 +68,7 @@ var comments = [
   {
     vehicleId: 2,
     name: 'Jules Winnfield',
-    comments: 'The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, for he is truly his brother’s keeper and the finder of lost children.',
+    comments: 'The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of the darkness, for he is truly his brother’s keeper and the finder of lost children. And I will strike down upon thee with great vengeance and furious anger those who attempt to poison and destroy my brothers. And you will know I am the Lord when I lay my vengeance upon you.',
     stars: 4
   },
   {
@@ -86,7 +86,7 @@ var comments = [
   {
     vehicleId: 4,
     name: 'Paul Walker',
-    comments: 'Do I really need to wear a seatbelt?',
+    comments: 'It\'s so safe, you don\'t even need to wear a seatbelt!',
     stars: 3
   },
   {
@@ -103,11 +103,11 @@ var comments = [
   }
 ]
 
-app.get('/cars', function(req, res) {
+app.get('/cars',(req, res) => {
   res.json(cars)
 })
 
-app.get('/cars/:vehicleId', function(req, res) {
+app.get('/cars/:vehicleId',(req, res) => {
   function getCar(car) {
     var reqId = req.params.vehicleId
     return car.vehicleId.toString() === reqId
@@ -116,17 +116,17 @@ app.get('/cars/:vehicleId', function(req, res) {
   res.json(selectedCar[0])
 })
 
-app.post('/comments', function(req, res) {
+app.post('/comments',(req, res) => {
   var comment = req.body
   comments.push(comment)
   res.sendStatus(201)
 })
 
-app.get('/comments', function(req, res) {
+app.get('/comments',(req, res) => {
   res.json(comments)
 })
 
-app.get('/comments/:vehicleId', function(req, res) {
+app.get('/comments/:vehicleId',(req, res) => {
   function isVehicleComment(comment) {
     if (req.params.vehicleId === comment.vehicleId.toString()) {
       return true
