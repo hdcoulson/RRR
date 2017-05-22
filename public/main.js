@@ -5,37 +5,36 @@ carsArray.then(function(response) {
   return response.json()
 })
   .then(function(carsArray) {
-    for (var i = 0; i <carsArray.length; i++) {
+    for (var i = 0; i < carsArray.length; i++) {
       var currentCar = carsArray[i]
       var $car = renderCar(currentCar)
       $carsContainer.appendChild($car)
     }
   })
 
-//list-view page
 function renderCar(car) {
-  var $column = document.createElement('div')//2
-  var $thumbnailClass = document.createElement('div')//3
-  var $carPhoto = document.createElement('img')//4
-  var $caption = document.createElement('div')//5
-  var $carName = document.createElement('h3')//6
-  var $description = document.createElement('p')//7
-  var $buttonDiv = document.createElement('p')//8
-  var $button = document.createElement('a')//9
+  var $column = document.createElement('div')
+  var $thumbnailClass = document.createElement('div')
+  var $carPhoto = document.createElement('img')
+  var $caption = document.createElement('div')
+  var $carName = document.createElement('h3')
+  var $description = document.createElement('p')
+  var $buttonDiv = document.createElement('p')
+  var $button = document.createElement('a')
 
-  $carName.textContent = car.make + ' ' + car.model//6
-  $description.textContent = car.description//7
+  $carName.textContent = car.make + ' ' + car.model
+  $description.textContent = car.description
   $button.textContent = 'Details'
 
-  $column.classList.add('col-sm-6', 'col-md-4')//2
-  $thumbnailClass.classList.add('thumbnail')//3
-  $caption.classList.add('caption')//5
-  $button.classList.add('btn', 'btn-primary','btn', 'btn-default', 'details')//9
+  $column.classList.add('col-sm-6', 'col-md-4')
+  $thumbnailClass.classList.add('thumbnail')
+  $caption.classList.add('caption')
+  $button.classList.add('btn', 'btn-primary','btn', 'btn-default', 'details')
   $carPhoto.classList.add('img-responsive')
 
-  $carPhoto.setAttribute('src', car.photo)//4
+  $carPhoto.setAttribute('src', car.photo)
   $carPhoto.setAttribute('id', car.vehicleId)
-  $button.setAttribute('href', '#')//9
+  $button.setAttribute('href', '#')
   $button.setAttribute('id', car.vehicleId)
   $carName.setAttribute('id', car.vehicleId)
 
@@ -48,14 +47,8 @@ function renderCar(car) {
   $buttonDiv.appendChild($button)
 
   return $column
-
-  carsArray.forEach(function (car) {
-    var $listView = document.querySelector('list-view')
-    $listView.appendChild(renderCar(car))
-  })
 }
 
-//details page
 function renderSelectedCar(car) {
   var $column = document.createElement('div')
   var $media = document.createElement('div')
@@ -86,7 +79,6 @@ function renderSelectedCar(car) {
   var $optionValueFive = document.createElement('option')
   var $submitButtonLabel = document.createElement('label')
   var $submitButton = document.createElement('button')
-
 
   $carName.textContent = car.make + ' ' + car.model
   $proReview.textContent = car.proReview
@@ -171,7 +163,6 @@ function renderSelectedCar(car) {
   return $column
 }
 
-//owner comments
 function renderFilteredComment(comment) {
 
   var $column = document.createElement('div')
@@ -182,19 +173,16 @@ function renderFilteredComment(comment) {
   var $commentBody = document.createElement('p')
   var $starRating = document.createElement('p')
 
-
   $mediaHeading.textContent = 'Owner comment'
   $commentName.textContent = comment.name
   $commentBody.textContent = comment.comments
   $starRating.textContent = 'Star Rating:' + ' ' + comment.stars
-
 
   $column.classList.add('col-sm-12')
   $column.classList.add('commentsDiv')
   $media.classList.add('media')
   $mediaHeading.classList.add('media-heading')
   $mediaBody.classList.add('media-body')
-
 
   $column.appendChild($media)
   $media.appendChild($mediaBody)
@@ -203,13 +191,10 @@ function renderFilteredComment(comment) {
   $mediaBody.appendChild($commentBody)
   $mediaBody.appendChild($starRating)
 
-
   return $column
 }
 
-
 function renderStarRatingDOMElement(rating) {
-  var $carPhotoDiv = document.querySelector('.carPhotoDiv')
 
   var $ownerRatingsDiv = document.createElement('div')
   var $ownerRatingsMedia = document.createElement('div')
@@ -231,9 +216,8 @@ function renderStarRatingDOMElement(rating) {
   $ownerRatingsMediaBody.appendChild($ownerRatingsTitle)
   $ownerRatingsMediaBody.appendChild($ownerRatingsBody)
 
-  $carPhotoDiv.appendChild($ownerRatingsDiv)
+  return $ownerRatingsDiv
 }
-
 
 function renderStarRating(commentsArray) {
   var onlyStarRatings = commentsArray.map(function(comment) {
@@ -243,10 +227,26 @@ function renderStarRating(commentsArray) {
   var sumOfAllStars = onlyStarRatings.reduce(function (a, b) {
     return a + b
   }, 0 )
-
   var rating = sumOfAllStars/(commentsArray.length)
-
   var roundedRating = (rating).toFixed(1)
 
   return (roundedRating + '  ' + 'Stars')
 }
+
+var starImagesArray = [
+  {
+    one: '1-star.png'
+  },
+  {
+    two: '2-stars.png'
+  },
+  {
+    three: '3-stars.png'
+  },
+  {
+    four: '4-stars.png'
+  },
+  {
+    five: '5-stars.png'
+  }
+]

@@ -7,11 +7,20 @@ label {
   padding: 20px;
 }
 
-.slogan {
+.intro {
   padding-bottom: 20px;
   padding-top: 10px;
 }
 
 #car-details {
   padding-top: 50px;
+}
+
+#slogan {
+  color: white;
+  font-size: 16px;
+}
+
+.logo {
+  padding-right: 20px;
 }
